@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mago Labs — Websites That Help Businesses Earn Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #000000; 
+  --surface: #111111;
+  --border: rgba(255, 255, 255, 0.12);
+  --text-main: #f5f5f7;
+  --text-muted: #86868b;
+  --accent: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+header nav, body > nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 64px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  text-decoration: none;
+}
+
+.nav-logo {
+  height: 80px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.nav-logo:hover { opacity: 1; }
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--text-main); }
+
+.nav-cta-link {
+  font-size: 13px;
+  font-weight: 500 !important;
+  color: var(--text-main) !important;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  transition: all 0.3s ease !important;
+}
+
+.nav-cta-link:hover {
+  background: var(--text-main);
+  color: var(--bg) !important;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 200px 64px 120px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: end;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ── TYPOGRAPHY SCALE ── */
+h1 {
+  font-size: clamp(48px, 5.5vw, 88px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  color: var(--text-main);
+  margin-bottom: 0;
+}
+h1 em {
+  font-style: normal;
+  color: var(--text-muted);
+}
+
+.hero-right p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--text-main);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 16px 36px;
+  border-radius: 100px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-primary:hover { 
+  transform: scale(1.02);
+  background: #e0e0e0; 
+}
+
+/* ── MARQUEE STRIP ── */
+.marquee-strip {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+  padding: 24px 0;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-flex;
+  gap: 0;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 40px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.marquee-dot {
+  width: 4px; height: 4px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── TRUTH / REALITY ── */
+.section-truth {
+  padding: 140px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.truth-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 80px;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  padding-top: 12px;
+}
+
+.truth-content h2 {
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+  margin-bottom: 56px;
+  max-width: 800px;
+}
+
+.truth-content h2 em { font-style: normal; color: var(--text-muted); }
+
+.truth-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 800px;
+  border: 1px solid var(--border);
+}
+
+.truth-col-item {
+  padding: 40px 40px;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+
+.truth-col-item:last-child {
+  border-right: none;
+}
+
+.truth-col-num {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.truth-cols p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.truth-cols p strong {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* ── WHAT WE BELIEVE ── */
+.section-belief {
+  padding: 140px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.belief-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: 800px;
+}
+
+.belief-card {
+  background: var(--bg);
+  padding: 40px;
+  transition: background 0.4s ease;
+}
+
+.belief-card:hover {
+  background: var(--surface);
+}
+
+.belief-card h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.belief-card p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ── SERVICES ── */
+.section-services {
+  border-bottom: 1px solid var(--border);
+}
+
+.services-header {
+  padding: 120px 64px 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.services-header h2 {
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+}
+
+.services-header p {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 300px;
+  text-align: right;
+  line-height: 1.7;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+}
+
+.svc {
+  padding: 64px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  transition: background 0.4s ease;
+}
+
+.svc:nth-child(3n) { border-right: none; }
+.svc:hover { background: var(--surface); }
+
+.svc-num {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 32px;
+  display: block;
+}
+
+.svc h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.svc p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── WHY MAGO LABS ── */
+.section-why {
+  border-bottom: 1px solid var(--border);
+}
+
+.why-header-wrapper {
+  padding: 140px 64px 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 80px;
+}
+
+.why-header-wrapper h2 {
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  margin-bottom: 32px;
+}
+
+.why-header-wrapper h2 em { font-style: normal; color: var(--text-muted); }
+
+.why-header-wrapper p.why-supporting {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--border);
+}
+
+.why-card {
+  padding: 64px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  transition: background 0.4s ease;
+}
+
+.why-card:nth-child(2n) { border-right: none; }
+.why-card:hover { background: var(--surface); }
+
+.why-card h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.why-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── NUMBERS ── */
+.section-numbers {
+  padding: 140px 64px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.numbers-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.numbers-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 80px;
+}
+
+.numbers-top h2 {
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+}
+
+.numbers-top h2 em { font-style: normal; color: var(--text-muted); }
+
+.numbers-top p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.stat {
+  background: var(--surface);
+  padding: 64px 48px;
+  transition: background 0.4s ease;
+}
+
+.stat:hover { background: #1a1a1a; }
+
+.stat-num {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 28px;
+  display: block;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.stat-label strong {
+  display: block;
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+/* ── PROCESS ── */
+.section-process {
+  padding: 140px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.process-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.process-header {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+.process-header h2 {
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  max-width: 600px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.step {
+  background: var(--bg);
+  padding: 64px 48px;
+  transition: background 0.4s ease;
+}
+
+.step:hover { background: var(--surface); }
+
+.step-num {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 28px;
+  display: block;
+}
+
+.step h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.step p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── FOUNDER ── */
+.section-founder {
+  padding: 140px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.founder-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.founder-header {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+.founder-header h2 {
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  max-width: 640px;
+}
+
+.founder-layout {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.founder-portrait-wrap {
+  position: relative;
+}
+
+.founder-portrait {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+.founder-portrait:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.founder-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  filter: contrast(1.08) brightness(.92);
+}
+
+.founder-portrait-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Monogram placeholder */
+.founder-monogram {
+  font-size: 72px;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.08);
+  user-select: none;
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  line-height: 1;
+}
+
+/* Subtle corner accent lines */
+.founder-portrait::before,
+.founder-portrait::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+.founder-portrait::before {
+  top: 16px; right: 16px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+.founder-portrait::after {
+  bottom: 16px; left: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-left: 1px solid rgba(255,255,255,0.2);
+}
+.founder-portrait:hover::before,
+.founder-portrait:hover::after {
+  width: 40px;
+  height: 40px;
+}
+
+.founder-portrait-label {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.founder-portrait-label strong {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.founder-portrait-label span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.founder-editorial {
+  padding-top: 8px;
+}
+
+.founder-divider {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.founder-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.founder-divider-mark {
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(255,255,255,0.3);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.founder-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 64px;
+}
+
+.founder-body p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.founder-body p:first-child {
+  font-size: 18px;
+  color: var(--text-main);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.founder-signature-area {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.founder-sig-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.founder-sig-name {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.founder-sig-role {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ── CTA ── */
+.section-cta {
+  padding: 160px 64px 160px;
+  text-align: center;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+}
+
+.cta-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  display: block;
+  margin-bottom: 40px;
+}
+
+.cta-inner h2 {
+  font-size: clamp(40px, 5.5vw, 80px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  margin-bottom: 32px;
+}
+
+.cta-inner h2 em {
+  font-style: normal;
+  color: var(--text-muted);
+}
+
+.cta-inner p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 64px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--surface);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── FOOTER PREMIUM ── */
+footer {
+  padding: 0 !important;
+  background: var(--bg) !important;
+  border-top: 1px solid var(--border) !important;
+  display: block !important;
+}
+
+.footer-main {
+  padding: 72px 64px 56px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.4fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.footer-col-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.footer-logo-wrap {
+  height: 80px;
+  overflow: visible;
+  margin-bottom: 28px;
+}
+
+
+.footer-brand-logo {
+  height: 80px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.footer-brand-logo:hover { opacity: 1; }
+
+.footer-brand-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.85;
+  font-weight: 300;
+  max-width: 260px;
+}
+
+.footer-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-nav-links a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease;
+  width: fit-content;
+  position: relative;
+  display: block;
+}
+
+.footer-nav-links a:hover { color: var(--text-main); }
+
+.footer-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-contact-item a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease;
+  display: block;
+  width: fit-content;
+}
+
+.footer-contact-item a:hover { color: var(--text-main); }
+
+.footer-social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-social-links a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+}
+
+.footer-social-links a:hover { color: var(--text-main); }
+
+.footer-social-arrow {
+  font-size: 10px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social-links a:hover .footer-social-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 24px 64px;
+  max-width: 100%;
+}
+
+.footer-bottom-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom-copy,
+.footer-bottom-tagline {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  font-weight: 300;
+}
+
+.footer-bottom-tagline {
+  font-style: italic;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  nav { padding: 0 32px; }
+  .hero { padding: 140px 32px 80px; grid-template-columns: 1fr; gap: 40px; }
+  .truth-inner, .process-header, .why-header-wrapper { grid-template-columns: 1fr; gap: 40px; }
+  .truth-cols { grid-template-columns: 1fr; gap: 32px; }
+  .section-belief { padding: 80px 32px; }
+  .services-header { flex-direction: column; align-items: flex-start; gap: 24px; padding: 80px 32px 40px; }
+  .services-header p { text-align: left; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .svc:nth-child(2n) { border-right: none; }
+  .svc:nth-child(3n) { border-right: 1px solid var(--border); }
+  .why-header-wrapper { padding: 80px 32px 40px; }
+  .why-card { padding: 48px 32px; }
+  .numbers-top { grid-template-columns: 1fr; gap: 32px; margin-bottom: 0; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .section-truth, .section-numbers, .section-process, .section-cta, .section-founder { padding: 80px 32px; }
+  .founder-header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 64px; }
+  .founder-layout { grid-template-columns: 280px 1fr; gap: 56px; }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 40px; padding: 56px 32px 48px; }
+  .footer-bottom { padding: 20px 32px; }
+  .truth-cols { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  nav { height: 64px; }
+  .nav-logo { height: 24px; }
+  .nav-links .hide-mobile { display: none; }
+  .belief-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .svc:nth-child(n) { border-right: none; }
+  .why-grid { grid-template-columns: 1fr; }
+  .why-card:nth-child(n) { border-right: none; }
+  .stats-row, .steps { grid-template-columns: 1fr; }
+  .numbers-top { margin-bottom: 0 !important; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+  .cta-actions { flex-direction: column; width: 100%; gap: 12px; }
+  .btn-primary, .btn-secondary { width: 100%; }
+  .section-cta { padding: 72px 28px; text-align: left; }
+  .cta-tag { margin-bottom: 20px; }
+  .cta-inner h2 { font-size: clamp(28px, 8vw, 40px); margin-bottom: 20px; letter-spacing: -0.04em; }
+  .cta-inner p { font-size: 15px; margin-bottom: 40px; max-width: 100%; line-height: 1.65; }
+  .hero { padding: 120px 28px 72px; }
+  h1 { font-size: clamp(36px, 9.5vw, 60px); }
+  .founder-layout { grid-template-columns: 1fr; gap: 48px; }
+  .founder-portrait { aspect-ratio: 4 / 3; }
+  .truth-cols { grid-template-columns: 1fr; }
+  .truth-col-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .truth-col-item:last-child { border-bottom: none; }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 36px; padding: 48px 24px 40px; }
+  .footer-bottom { padding: 20px 24px; }
+  .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
+  .footer-brand-logo { height: 24px; }
+  .footer-logo-wrap { height: 24px; }
+  .footer-brand-desc { max-width: 100%; }
+  .footer-col-label { margin-top: 4px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo-container">
+    <img class="nav-logo" src="logo.png" alt="Mago Labs">
+  </a>
+  <div class="nav-links">
+    <a href="#services" class="hide-mobile">Services</a>
+    <a href="#process" class="hide-mobile">Process</a>
+    <a href="#contact" class="nav-cta-link">Get in Touch</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1 class="gsap-hero">
+      Your website should be<br>
+      bringing you customers.<br>
+      <em>Not costing you them.</em>
+    </h1>
+  </div>
+  <div class="hero-right">
+    <p class="gsap-hero-delay">
+      Every day, potential customers search for your business online. If your website looks outdated, loads slowly, or doesn't clearly explain what you do, many of those visitors leave before contacting you. We help businesses build professional websites that create trust, attract enquiries, and support long-term growth.
+    </p>
+    <a href="#contact" class="btn-primary gsap-hero-btn">Get a Free Consultation</a>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">Professional Websites <span class="marquee-dot"></span></span>
+    <span class="marquee-item">E-Commerce Stores <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Landing Pages <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Website Redesigns <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Ongoing Support <span class="marquee-dot"></span></span>
+    <span class="marquee-item">SEO Foundations <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Mobile Optimisation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Fast Loading Websites <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Professional Websites <span class="marquee-dot"></span></span>
+    <span class="marquee-item">E-Commerce Stores <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Landing Pages <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Website Redesigns <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Ongoing Support <span class="marquee-dot"></span></span>
+    <span class="marquee-item">SEO Foundations <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Mobile Optimisation <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Fast Loading Websites <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<section class="section-truth">
+  <div class="truth-inner">
+    <p class="section-label gsap-fade">The reality</p>
+    <div class="truth-content">
+      <h2 class="gsap-fade">Your website is often the first impression<br><em>people get of your business.</em></h2>
+      <div class="truth-cols gsap-fade">
+        <div class="truth-col-item">
+          <span class="truth-col-num">01</span>
+          <p>When someone hears about your business, one of the first things they do is search for you online. Before they call, email, or visit your office, they look at your website.</p>
+        </div>
+        <div class="truth-col-item">
+          <span class="truth-col-num">02</span>
+          <p><strong>A professional website builds confidence before the conversation even starts.</strong> If your website feels outdated, confusing, or incomplete, people naturally question the quality of the business behind it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-belief">
+  <div class="truth-inner">
+    <p class="section-label gsap-fade">WHAT WE BELIEVE</p>
+    <div class="truth-content">
+      <h2 class="gsap-fade">Good websites don't just look better.<br><em>They make businesses more trustworthy.</em></h2>
+      <div class="belief-grid gsap-fade">
+        <div class="belief-card">
+          <span class="truth-col-num">01</span>
+          <h3>Trust comes first.</h3>
+          <p>People decide how credible a business feels long before they make contact.</p>
+        </div>
+        <div class="belief-card">
+          <span class="truth-col-num">02</span>
+          <h3>Clarity beats complexity.</h3>
+          <p>Visitors should immediately understand what a business does and why it matters.</p>
+        </div>
+        <div class="belief-card">
+          <span class="truth-col-num">03</span>
+          <h3>Design should serve a purpose.</h3>
+          <p>Every element should help users take action, not distract them.</p>
+        </div>
+        <div class="belief-card">
+          <span class="truth-col-num">04</span>
+          <h3>Quality creates confidence.</h3>
+          <p>A professional online presence signals professionalism in the business itself.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-services" id="services">
+  <div class="services-header gsap-fade">
+    <h2>Websites built for real businesses.</h2>
+    <p>Whether you're launching something new or improving an existing website, we create digital experiences that help customers trust your business and take action.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc gsap-stagger">
+      <span class="svc-num">01</span>
+      <h3>Website Design</h3>
+      <p>Professional website design focused on clarity, trust, and user experience. Every page is carefully planned to guide visitors towards becoming customers.</p>
+    </div>
+    <div class="svc gsap-stagger">
+      <span class="svc-num">02</span>
+      <h3>Web Development</h3>
+      <p>Fast, secure, and responsive websites built using modern technologies. Designed to perform smoothly across every device.</p>
+    </div>
+    <div class="svc gsap-stagger">
+      <span class="svc-num">03</span>
+      <h3>E-Commerce</h3>
+      <p>Sell products online with a store that's easy to manage and enjoyable for customers to use.</p>
+    </div>
+    <div class="svc gsap-stagger">
+      <span class="svc-num">04</span>
+      <h3>Brand Identity</h3>
+      <p>A consistent visual identity that helps your business look professional, memorable, and trustworthy.</p>
+    </div>
+    <div class="svc gsap-stagger">
+      <span class="svc-num">05</span>
+      <h3>Landing Pages</h3>
+      <p>Dedicated pages built to turn advertising traffic into enquiries, bookings, or sales.</p>
+    </div>
+    <div class="svc gsap-stagger">
+      <span class="svc-num">06</span>
+      <h3>Ongoing Support</h3>
+      <p>Reliable support after launch for updates, improvements, and technical assistance whenever needed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-why">
+  <div class="why-header-wrapper">
+    <p class="section-label gsap-fade">WHY MAGO LABS</p>
+    <div>
+      <h2 class="gsap-fade">A small studio by choice.<br><em>Built for businesses that value quality.</em></h2>
+      <p class="why-supporting gsap-fade">We intentionally keep our projects focused so every website receives the attention it deserves.</p>
+    </div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card gsap-stagger-why">
+      <h3>Direct Communication</h3>
+      <p>Work directly with the founder throughout the project. No layers of communication. No unnecessary complexity.</p>
+    </div>
+    <div class="why-card gsap-stagger-why">
+      <h3>Thoughtful Design</h3>
+      <p>Every website is carefully planned around your business, customers, and goals rather than relying on generic templates.</p>
+    </div>
+    <div class="why-card gsap-stagger-why">
+      <h3>Quality Over Volume</h3>
+      <p>We prioritise craftsmanship and attention to detail over taking on large numbers of projects.</p>
+    </div>
+    <div class="why-card gsap-stagger-why">
+      <h3>Long-Term Support</h3>
+      <p>Our relationship doesn't end at launch. We're available for updates, improvements, and ongoing guidance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-numbers">
+  <div class="numbers-inner">
+    <div class="numbers-top gsap-fade">
+      <h2>Why businesses choose to invest<br>in a <em>better website.</em></h2>
+      <p>A good website isn't an expense. It's a business asset that works around the clock to represent your company and help people decide whether they want to work with you.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat gsap-stagger-2">
+        <div class="stat-num">01</div>
+        <div class="stat-label"><strong>Build trust with potential customers.</strong><br>Your website is often the first thing people see. A professional design creates confidence before the conversation starts.</div>
+      </div>
+      <div class="stat gsap-stagger-2">
+        <div class="stat-num">02</div>
+        <div class="stat-label"><strong>Clearly explain your services.</strong><br>A well-structured website makes it easy for visitors to understand what you do and why they should choose you.</div>
+      </div>
+      <div class="stat gsap-stagger-2">
+        <div class="stat-num">03</div>
+        <div class="stat-label"><strong>Generate more enquiries.</strong><br>When your website communicates clearly and builds trust, more visitors take the next step and get in touch.</div>
+      </div>
+      <div class="stat gsap-stagger-2">
+        <div class="stat-num">04</div>
+        <div class="stat-label"><strong>Create a stronger professional image.</strong><br>Your website reflects your business. A modern, polished presence signals that you take your work seriously.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-process" id="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <p class="section-label gsap-fade">How we work</p>
+      <h2 class="gsap-fade">A process designed to keep things simple.</h2>
+    </div>
+    <p class="gsap-fade" style="max-width:600px; font-size:15px; color:var(--text-muted); line-height:1.8; margin-bottom:80px;">Every project follows a clear path from initial conversation to launch. No surprises. No unnecessary complexity.</p>
+    <div class="steps">
+      <div class="step gsap-stagger-3">
+        <span class="step-num">Step 01</span>
+        <h3>Discovery</h3>
+        <p>We learn about your business, goals, services, and customers so we can understand exactly what the website needs to achieve.</p>
+      </div>
+      <div class="step gsap-stagger-3">
+        <span class="step-num">Step 02</span>
+        <h3>Planning & Design</h3>
+        <p>We create the structure and visual direction of the website and share everything with you before development begins.</p>
+      </div>
+      <div class="step gsap-stagger-3">
+        <span class="step-num">Step 03</span>
+        <h3>Development</h3>
+        <p>Your website is built, tested, optimised for mobile devices, and prepared for launch.</p>
+      </div>
+      <div class="step gsap-stagger-3">
+        <span class="step-num">Step 04</span>
+        <h3>Launch & Support</h3>
+        <p>Once everything is approved, we launch your website and remain available for ongoing support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-founder" id="founder">
+  <div class="founder-inner">
+
+    <div class="founder-header">
+      <p class="section-label gsap-fade">Founder</p>
+      <h2 class="gsap-fade">Built with care,<br>not templates.</h2>
+    </div>
+
+    <div class="founder-layout">
+
+  <div class="founder-portrait-wrap gsap-founder-portrait">
+    <div class="founder-portrait">
+      <img src="burhan-founder.png"
+           alt="Burhan Kapasi"
+           class="founder-image">
+    </div>
+  </div>
+
+  <div class="founder-editorial gsap-founder-editorial">
+        <div class="founder-divider">
+          <div class="founder-divider-line"></div>
+          <div class="founder-divider-mark"></div>
+          <div class="founder-divider-line"></div>
+        </div>
+
+        <div class="founder-body">
+          <p>Mago Labs was founded with a simple belief: many businesses provide excellent products and services but struggle to communicate that quality online.</p>
+          <p>We've seen great companies lose opportunities because their websites didn't reflect the professionalism of the business behind them.</p>
+          <p>Our goal is straightforward: build websites that help businesses earn trust, communicate clearly, and create a strong first impression. Nothing exaggerated. Nothing unnecessarily complicated. Just thoughtful design, honest communication, and work we're proud to put our name on.</p>
+        </div>
+
+        <div class="founder-signature-area">
+          <div class="founder-sig-text">
+            <span class="founder-sig-name">Burhan Kapasi</span>
+            <span class="founder-sig-role">Founder &amp; Director, Mago Labs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section-cta" id="contact">
+  <div class="cta-inner">
+    <span class="cta-tag gsap-fade">Let's talk</span>
+    <h2 class="gsap-fade">Ready for a website that<br>truly represents <em>your business?</em></h2>
+    <p class="gsap-fade">Whether you're starting from scratch or looking to improve an existing website, we'd be happy to discuss your goals and explore what makes sense for your business. No pressure. No sales tactics. Just an honest conversation.</p>
+    
+    <div class="cta-actions gsap-fade">
+      <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+      <a href="tel:+919099245605" class="btn-secondary">Call Us</a>
+      <a href="https://wa.me/919099245605" class="btn-secondary" target="_blank">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-col">
+      <div class="footer-logo-wrap">
+        <img class="footer-brand-logo" src="logo.png" alt="Mago Labs">
+      </div>
+      <p class="footer-brand-desc">We design and build professional websites that help businesses earn trust, communicate clearly, and create a strong first impression.</p>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-col-label">Navigation</span>
+      <nav class="footer-nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-col-label">Contact</span>
+      <div class="footer-contact-item">
+        <a href="mailto:burhan@magolabs.in">burhan@magolabs.in</a>
+        <a href="tel:+919099245605">+91 90992 45605</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-col-label">Connect</span>
+      <div class="footer-social-links">
+        <a href="#" target="_blank">Instagram <span class="footer-social-arrow">↗</span></a>
+        <a href="#" target="_blank">LinkedIn <span class="footer-social-arrow">↗</span></a>
+        <a href="https://wa.me/919099245605" target="_blank">WhatsApp <span class="footer-social-arrow">↗</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span class="footer-bottom-copy">© 2026 Mago Labs. All rights reserved.</span>
+      <span class="footer-bottom-tagline">Designed &amp; developed with intention.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  const heroTl = gsap.timeline();
+  
+  heroTl.from(".gsap-hero", { y: 40, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 })
+        .from(".gsap-hero-delay", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.6")
+        .from(".gsap-hero-btn", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+        .from(".nav-links", { y: -20, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"}, "-=1");
+
+  gsap.utils.toArray('.gsap-fade').forEach(element => {
+    gsap.from(element, {
+      scrollTrigger: {
+        trigger: element,
+        start: "top 85%",
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+  });
+
+  gsap.from(".gsap-stagger", {
+    scrollTrigger: { trigger: ".services-grid", start: "top 80%" },
+    y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+  });
+
+  gsap.from(".gsap-stagger-why", {
+    scrollTrigger: { trigger: ".why-grid", start: "top 80%" },
+    y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+  });
+
+  gsap.from(".gsap-stagger-2", {
+    scrollTrigger: { trigger: ".stats-row", start: "top 80%" },
+    y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+  });
+
+  gsap.from(".gsap-stagger-3", {
+    scrollTrigger: { trigger: ".steps", start: "top 80%" },
+    y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+  });
+
+  gsap.from(".gsap-founder-portrait", {
+    scrollTrigger: { trigger: ".founder-layout", start: "top 80%" },
+    x: -40, opacity: 0, duration: 1, ease: "power2.out"
+  });
+
+  gsap.from(".gsap-founder-editorial", {
+    scrollTrigger: { trigger: ".founder-layout", start: "top 80%" },
+    x: 40, opacity: 0, duration: 1, ease: "power2.out", delay: 0.15
+  });
+
+  gsap.from(".footer-col", {
+    scrollTrigger: { trigger: "footer", start: "top 90%" },
+    y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+  });
+</script>
+</body>
+</html>
